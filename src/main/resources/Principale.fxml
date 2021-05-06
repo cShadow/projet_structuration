@@ -4,27 +4,24 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="608.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="-57.0" layoutY="-82.0" prefHeight="750.0" prefWidth="900.0">
+      <AnchorPane layoutX="-57.0" layoutY="-82.0" prefHeight="694.0" prefWidth="827.0">
          <children>
-            <TabPane layoutX="51.0" layoutY="83.0" prefHeight="601.0" prefWidth="849.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="51.0" layoutY="82.0" prefHeight="603.0" prefWidth="798.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="mieuxnote" text="Mieux notées">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="599.0" prefWidth="868.0">
+                              <TableView prefHeight="659.0" prefWidth="868.0">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" text="Titre" />
-                                    <TableColumn prefWidth="75.0" text="Auteurs" />
-                                    <TableColumn prefWidth="75.0" text="Formations" />
-                                    <TableColumn prefWidth="75.0" text="Universites" />
-                                    <TableColumn prefWidth="92.800048828125" text="Action" />
+                                    <TableColumn prefWidth="180.79998779296875" text="Titre" />
+                                    <TableColumn prefWidth="184.800048828125" text="Auteurs" />
+                                    <TableColumn prefWidth="244.0" text="Notes" />
+                                    <TableColumn prefWidth="242.39996337890625" text="Action" />
                                  </columns>
                               </TableView>
                            </children>
@@ -37,11 +34,10 @@
                            <children>
                               <TableView layoutX="6.0" layoutY="4.0" prefHeight="634.0" prefWidth="844.0">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" text="Titre" />
-                                    <TableColumn prefWidth="75.0" text="Auteurs" />
-                                    <TableColumn prefWidth="75.0" text="Formations" />
-                                    <TableColumn prefWidth="75.0" text="Universites" />
-                                    <TableColumn prefWidth="103.99993896484375" text="Action" />
+                                    <TableColumn prefWidth="213.60003662109375" text="Titre" />
+                                    <TableColumn minWidth="0.0" prefWidth="186.4000244140625" text="Auteurs" />
+                                    <TableColumn minWidth="0.0" prefWidth="239.99993896484375" text="Dernier commentaire" />
+                                    <TableColumn prefWidth="205.60003662109375" text="Action" />
                                  </columns>
                               </TableView>
                            </children>
@@ -52,17 +48,14 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutY="-2.0" prefHeight="601.0" prefWidth="868.0">
+                              <TableView layoutY="-2.0" prefHeight="600.0" prefWidth="900.0">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" text="Titre" />
-                                    <TableColumn prefWidth="75.0" text="Auteurs" />
-                                    <TableColumn prefWidth="75.0" text="Formations" />
-                                    <TableColumn prefWidth="74.66659545898438" text="Universites" />
-                                    <TableColumn prefWidth="104.66668701171875" text="Action" />
+                                    <TableColumn prefWidth="200.0" text="Titre" />
+                                    <TableColumn prefWidth="200.0" text="Auteurs" />
+                                    <TableColumn prefWidth="200.0" text="Universites" />
+                                    <TableColumn prefWidth="200.0" text="Action" />
                                  </columns>
                               </TableView>
-                              <Text layoutX="702.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une note" />
-                              <TextArea layoutX="802.0" layoutY="2.0" prefHeight="39.0" prefWidth="48.0" />
                            </children>
                         </AnchorPane>
                      </content>

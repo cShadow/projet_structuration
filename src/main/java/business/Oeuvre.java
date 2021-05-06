@@ -7,10 +7,10 @@ public class Oeuvre {
 
 	private String titre;
 	private String auteur;
-	private int nbpage;
+	private int nbPage;
 	private Date datePublication;
 	private Thematique thematique;
 	private ArrayList<Formation> accesFormation;
 	private ArrayList<Universite> accesUniversite;
-	private String Role;
+	private String role;
 }

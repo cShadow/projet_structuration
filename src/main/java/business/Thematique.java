@@ -1,15 +1,12 @@
 package business;
 
 public enum Thematique {
-	
-	    Rapport_de_stage, 
+	    RapportDeStage, 
 	    Memoire,
 	    These,
-	    Sujet_de_recherche,
+	    SujetDeRecherche,
 	    Documentation,
 	    Guide;
-
-
 	}
 
 
