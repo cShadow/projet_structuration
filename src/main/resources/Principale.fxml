@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-57.0" layoutY="-82.0" prefHeight="750.0" prefWidth="900.0">
+         <children>
+            <TabPane layoutX="51.0" layoutY="81.0" prefHeight="618.0" prefWidth="849.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="mieuxnote" text="Mieux notées">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView prefHeight="599.0" prefWidth="868.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Titre" />
+                                    <TableColumn prefWidth="75.0" text="Auteurs" />
+                                    <TableColumn prefWidth="48.80000305175781" text="Pages" />
+                                    <TableColumn prefWidth="101.60003662109375" text="Publication" />
+                                    <TableColumn prefWidth="75.0" text="Theme" />
+                                    <TableColumn prefWidth="75.0" text="Formations" />
+                                    <TableColumn prefWidth="75.0" text="Universites" />
+                                    <TableColumn prefWidth="75.0" text="Roles" />
+                                    <TableColumn prefWidth="103.99993896484375" text="Contenu" />
+                                    <TableColumn prefWidth="47.2000732421875" text="Note" />
+                                    <TableColumn prefWidth="92.800048828125" text="Commentaire" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="recomment" text="Récemment commentée">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutY="1.0" prefHeight="637.0" prefWidth="850.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Titre" />
+                                    <TableColumn prefWidth="75.0" text="Auteurs" />
+                                    <TableColumn prefWidth="48.80000305175781" text="Pages" />
+                                    <TableColumn prefWidth="101.60003662109375" text="Publication" />
+                                    <TableColumn prefWidth="75.0" text="Theme" />
+                                    <TableColumn prefWidth="75.0" text="Formations" />
+                                    <TableColumn prefWidth="75.0" text="Universites" />
+                                    <TableColumn prefWidth="75.0" text="Roles" />
+                                    <TableColumn prefWidth="103.99993896484375" text="Contenu" />
+                                    <TableColumn prefWidth="47.2000732421875" text="Note" />
+                                    <TableColumn prefWidth="94.39993896484373" text="Commentaire" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="titreContenu" text="Titre/Contenu">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutY="44.0" prefHeight="555.0" prefWidth="868.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Titre" />
+                                    <TableColumn prefWidth="75.0" text="Auteurs" />
+                                    <TableColumn prefWidth="48.80000305175781" text="Pages" />
+                                    <TableColumn prefWidth="101.60003662109375" text="Publication" />
+                                    <TableColumn prefWidth="75.0" text="Theme" />
+                                    <TableColumn prefWidth="75.0" text="Formations" />
+                                    <TableColumn prefWidth="75.0" text="Universites" />
+                                    <TableColumn prefWidth="75.0" text="Roles" />
+                                    <TableColumn prefWidth="103.99993896484375" text="Contenu" />
+                                    <TableColumn prefWidth="47.2000732421875" text="Note" />
+                                    <TableColumn prefWidth="112.0" text="Commentaire" />
+                                 </columns>
+                              </TableView>
+                              <Text layoutX="402.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez commentaire" />
+                              <TextArea layoutX="523.0" layoutY="2.0" prefHeight="26.0" prefWidth="161.0" />
+                              <Text layoutX="702.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une note" />
+                              <TextArea layoutX="802.0" layoutY="2.0" prefHeight="39.0" prefWidth="48.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="thematique" text="Thématique">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="664.0" prefWidth="850.0">
+                           <children>
+                              <TableView layoutX="-17.0" layoutY="39.0" prefHeight="599.0" prefWidth="868.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Titre" />
+                                  <TableColumn prefWidth="75.0" text="Auteurs" />
+                                    <TableColumn prefWidth="48.80000305175781" text="Pages" />
+                                    <TableColumn prefWidth="101.60003662109375" text="Publication" />
+                                    <TableColumn prefWidth="75.0" text="Theme" />
+                                    <TableColumn prefWidth="75.0" text="Formations" />
+                                    <TableColumn prefWidth="75.0" text="Universites" />
+                                    <TableColumn prefWidth="75.0" text="Roles" />
+                                    <TableColumn prefWidth="103.99993896484375" text="Contenu" />
+                                    <TableColumn prefWidth="47.2000732421875" text="Note" />
+                                    <TableColumn prefWidth="112.0" text="Commentaire" />
+                                </columns>
+                              </TableView>
+                              <TextArea layoutX="536.0" prefHeight="26.0" prefWidth="161.0" />
+                              <Text layoutX="417.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez commentaire" />
+                              <TextArea layoutX="803.0" layoutY="-2.0" prefHeight="39.0" prefWidth="48.0" />
+                              <Text layoutX="706.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une note" />
+                              <ComboBox layoutX="105.0" layoutY="7.0" prefWidth="150.0" />
+                              <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thématiques" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

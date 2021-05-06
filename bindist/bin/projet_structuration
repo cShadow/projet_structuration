@@ -97,7 +97,7 @@ then
   REPO="$BASEDIR"/repo
 fi
 
-CLASSPATH="$BASEDIR"/etc:"$REPO"/org/mongodb/mongodb-driver-sync/4.2.2/mongodb-driver-sync-4.2.2.jar:"$REPO"/org/mongodb/bson/4.2.2/bson-4.2.2.jar:"$REPO"/org/mongodb/mongodb-driver-core/4.2.2/mongodb-driver-core-4.2.2.jar:"$REPO"/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:"$REPO"/fr/ul/miage/projet_structuration/0.0.1-SNAPSHOT/projet_structuration-0.0.1-SNAPSHOT.jar
+CLASSPATH="$BASEDIR"/etc:"$REPO"/org/mongodb/mongodb-driver-sync/4.2.2/mongodb-driver-sync-4.2.2.jar:"$REPO"/org/mongodb/bson/4.2.2/bson-4.2.2.jar:"$REPO"/org/mongodb/mongodb-driver-core/4.2.2/mongodb-driver-core-4.2.2.jar:"$REPO"/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:"$REPO"/org/json/json/20210307/json-20210307.jar:"$REPO"/fr/ul/miage/projet_structuration/0.0.1-SNAPSHOT/projet_structuration-0.0.1-SNAPSHOT.jar
 
 ENDORSED_DIR=
 if [ -n "$ENDORSED_DIR" ] ; then

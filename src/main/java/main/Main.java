@@ -4,12 +4,17 @@ import java.util.Arrays;
 
 import org.bson.Document;
 
+import com.google.gson.Gson;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import business.Oeuvre;
+
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.CharBuffer;
 
 
@@ -22,8 +27,7 @@ public class Main {
 		// Selection de la collection
 		MongoCollection<Document> collection = database.getCollection("data");
 		
-		
-		
+		s
 		
 /*
 		// Insertion d'un document

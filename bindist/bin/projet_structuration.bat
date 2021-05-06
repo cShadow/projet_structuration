@@ -72,7 +72,7 @@ if "%JAVACMD%"=="" set JAVACMD=java
 
 if "%REPO%"=="" set REPO=%BASEDIR%\repo
 
-set CLASSPATH="%BASEDIR%"\etc;"%REPO%"\org\mongodb\mongodb-driver-sync\4.2.2\mongodb-driver-sync-4.2.2.jar;"%REPO%"\org\mongodb\bson\4.2.2\bson-4.2.2.jar;"%REPO%"\org\mongodb\mongodb-driver-core\4.2.2\mongodb-driver-core-4.2.2.jar;"%REPO%"\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;"%REPO%"\fr\ul\miage\projet_structuration\0.0.1-SNAPSHOT\projet_structuration-0.0.1-SNAPSHOT.jar
+set CLASSPATH="%BASEDIR%"\etc;"%REPO%"\org\mongodb\mongodb-driver-sync\4.2.2\mongodb-driver-sync-4.2.2.jar;"%REPO%"\org\mongodb\bson\4.2.2\bson-4.2.2.jar;"%REPO%"\org\mongodb\mongodb-driver-core\4.2.2\mongodb-driver-core-4.2.2.jar;"%REPO%"\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;"%REPO%"\org\json\json\20210307\json-20210307.jar;"%REPO%"\fr\ul\miage\projet_structuration\0.0.1-SNAPSHOT\projet_structuration-0.0.1-SNAPSHOT.jar
 
 set ENDORSED_DIR=
 if NOT "%ENDORSED_DIR%" == "" set CLASSPATH="%BASEDIR%"\%ENDORSED_DIR%\*;%CLASSPATH%
