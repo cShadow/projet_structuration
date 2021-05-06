@@ -12,5 +12,5 @@ public class Oeuvre {
 	private Thematique thematique;
 	private ArrayList<Formation> accesFormation;
 	private ArrayList<Universite> accesUniversite;
-	private ArrayList<Role> accesRole;
+	private String Role;
 }
