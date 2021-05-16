@@ -1,13 +1,28 @@
 package main;
 
+
+import com.mongodb.*;
+import com.mongodb.ConnectionString;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+
+import com.mongodb.ServerAddress;
+
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoIterable;
+
+import org.bson.Document;
 import java.util.Arrays;
 
-//import org.bson.Document;
+import com.mongodb.client.MongoCursor;
+import static com.mongodb.client.model.Filters.*;
+import com.mongodb.client.result.DeleteResult;
+import static com.mongodb.client.model.Updates.*;
+import com.mongodb.client.result.UpdateResult;
+import java.util.ArrayList;
+import java.util.List;
 
-//import com.mongodb.client.MongoClient;
-//import com.mongodb.client.MongoClients;
-//import com.mongodb.client.MongoCollection;
-//import com.mongodb.client.MongoDatabase;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,14 +32,29 @@ import java.io.FileInputStream;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		//MongoClient mongoClient = MongoClients.create();
-		//MongoDatabase database = mongoClient.getDatabase("data");
-		//MongoCollection<Document> collection = database.getCollection("data");
+
+		MongoClient client = MongoClients.create("mongodb://localhost:27017");
+		MongoDatabase database = client.getDatabase("data");
+		//MongoCollection collection = database.getCollection("data");
+        
+		System.out.println("Congratulations, you have run the program !");
+
+		MongoIterable<String> listNames = database.listCollectionNames();
+        for (String name : listNames) {
+			System.out.println(name);
+        }
+        // java Document toy = new Document(“name”, “yoyo”) .append(“ages”, new Document(“min”, 5)); ObjectId id = toys.insertOne(toy).getInsertedId().asObjectId().getValue();
+
+
+		
 		importMissingFiles();
 	}
 
 	public static void importFileIfMissing(File importFile)
 	{
+
+		Oeuvre oeuvre = new Oeuvre();
+
 		try {
 			// We read the entire file into memory, 
 			// then use top down parsing to get the information we want to feed to MongoDB.
@@ -34,12 +64,29 @@ public class Main {
 			fileInputStream.close();
 			String fileContent = new String(fileData, "UTF-8");
 
-			String[] fieldPrefixes = new String[]{"Titre:", "Auteurs:", "Pages:", "Publication:", "Theme:", "Formations:", "Universites:", "Roles:", "Contenu:"};
+			ArrayList<String> fieldPrefixes = new String[]{"Titre:", "Auteurs:", "Pages:", "Publication:", "Theme:", "Formations:", "Universites:", "Roles:", "Contenu:"};
 			String[] fieldStrings = new String[9];
+
 
 			// We fill in the fieldStrings.
 			int at = 0;
 			boolean fileIsValid = true;
+
+			InputStream in = new FileInputStream(importFile);
+			Reader reader = new InputStreamReader(in, "US-ASCII");
+			int intch;
+			String keyword = new String("");
+			while ((intch = r.read()) != -1) {
+				char ch = (char) intch;
+				keyword += ch;
+
+				if (fieldPrefixes.contains())
+
+
+
+			
+			}
+
 			for (int fieldIndex = 0; fieldIndex < fieldPrefixes.length - 1; fieldIndex++)
 			{
 				String fieldPrefix = fieldPrefixes[fieldIndex];
@@ -108,38 +155,32 @@ public class Main {
 		int pushIndex = 0;
 		int fetchIndex = 0;
 
-		// TODO: set the actual import folder path here
 		foldersStack[0] = new File("import");
+		String currentDirectory = System.getProperty("user.dir");
+		System.out.println("The current working directory is " + currentDirectory);
+
 		++pushIndex;
-		if (foldersStack[0] != null)
+		while (fetchIndex != pushIndex)
 		{
-			while (fetchIndex != pushIndex)
+			File folder = foldersStack[fetchIndex];
+			fetchIndex = (fetchIndex+1) % foldersStack.length;
+			File[] entries = folder.listFiles();
+			for(int entryIndex = 0; entryIndex < entries.length; ++entryIndex) 
 			{
-				File folder = foldersStack[fetchIndex];
-				fetchIndex = (fetchIndex+1) % foldersStack.length;
-				File[] entries = folder.listFiles();
-				for(int entryIndex = 0; entryIndex < entries.length; ++entryIndex) 
+				File entry = entries[entryIndex];
+				if (entry.isDirectory())
 				{
-					File entry = entries[entryIndex];
-					if (entry.isDirectory())
-					{
-						foldersStack[pushIndex] = entry;
-						pushIndex = (pushIndex+1) % foldersStack.length;
-						System.out.print("Directory: ");
-					}
-					else if (entry.isFile())
-					{
-						System.out.print("File: ");
-						importFileIfMissing(entry);
-					}
-					System.out.println(entry.getName());
+					foldersStack[pushIndex] = entry;
+					pushIndex = (pushIndex+1) % foldersStack.length;
+					//System.out.print("Directory: ");
 				}
+				else if (entry.isFile())
+				{
+					//System.out.print("File: ");
+					importFileIfMissing(entry);
+				}
+				System.out.println(entry.getName());
 			}
 		}
-		else
-		{
-			System.out.println("Import folder was not found");
-		}
-
 	}
 }

@@ -8,21 +8,21 @@ public class Inscription {
 	private String nomUtilisateur;
 	private String prenomUtilisateur;
 	private String nomFormation;
-	private String nomUniversité;
+	private String nomUniversite;
 	private Date dateSortie;
-	private Date dateEntrer;
+	private Date dateEntree;
 
 
 	public Inscription(int id, int idUtilisateur, String nomUtilisateur, String prenomUtilisateur,
-			String nomFormation, String nomUniversité, Date dateSortie, Date dateEntrer) {
+			String nomFormation, String nomUniversite, Date dateSortie, Date dateEntree) {
 		this.idUtilisateur = idUtilisateur;
 		this.id = id++;
 		this.nomUtilisateur = nomUtilisateur;
 		this.prenomUtilisateur = prenomUtilisateur;
 		this.nomFormation = nomFormation;
-		this.nomUniversité = nomUniversité;
+		this.nomUniversite = nomUniversite;
 		this.dateSortie = dateSortie;
-		this.dateEntrer = dateEntrer;
+		this.dateEntree = dateEntree;
 	}
 
 

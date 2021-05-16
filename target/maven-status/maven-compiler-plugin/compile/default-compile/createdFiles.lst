@@ -1,1 +1,17 @@
+frontend\ControllerPrincipal.class
+backend\Login.class
+business\Formation.class
+business\Thematique.class
+business\Oeuvre.class
+backend\Backend.class
+frontend\ControllerLogin.class
+business\Universite.class
 business\Inscription.class
+backend\Commentaire.class
+backend\Recherche.class
+main\Main.class
+business\Auteur.class
+backend\MostRecentComment.class
+business\Utilisateur.class
+backend\MostRated.class
+frontend\ControllerArtwork.class

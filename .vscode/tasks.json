@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks":
+	[
+		{
+			"label": "compile",
+			"type": "shell",
+			"command": "mvn -B install",
+			"group": "build"
+		},
+		{
+			"label": "package",
+			"type": "shell",
+			"command": "mvn package",
+			"group": "build"
+		},
+
+		{
+			"label": "annihilate all of this garbage",
+			"type": "shell",
+			"command": "mvn -e clean",
+			"group": "build"
+		},
+	]
+}
