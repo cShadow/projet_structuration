@@ -20,12 +20,16 @@ import static com.mongodb.client.model.Filters.*;
 import com.mongodb.client.result.DeleteResult;
 import static com.mongodb.client.model.Updates.*;
 import com.mongodb.client.result.UpdateResult;
+
+import business.Oeuvre;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.CharBuffer;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,21 +40,21 @@ public class Main {
 		MongoClient client = MongoClients.create("mongodb://localhost:27017");
 		MongoDatabase database = client.getDatabase("data");
 		//MongoCollection collection = database.getCollection("data");
-        
+		
 		System.out.println("Congratulations, you have run the program !");
 
 		MongoIterable<String> listNames = database.listCollectionNames();
         for (String name : listNames) {
 			System.out.println(name);
         }
-        // java Document toy = new Document(“name”, “yoyo”) .append(“ages”, new Document(“min”, 5)); ObjectId id = toys.insertOne(toy).getInsertedId().asObjectId().getValue();
+        // java Document toy = new Document(â€œnameâ€�, â€œyoyoâ€�) .append(â€œagesâ€�, new Document(â€œminâ€�, 5)); ObjectId id = toys.insertOne(toy).getInsertedId().asObjectId().getValue();
 
 
 		
 		importMissingFiles();
 	}
 
-	public static void importFileIfMissing(File importFile)
+	/*public static void importFileIfMissing(File importFile)
 	{
 
 		Oeuvre oeuvre = new Oeuvre();
@@ -133,7 +137,7 @@ public class Main {
 								.append("versions", Arrays.asList("v3.2", "v3.0", "v2.6"))
 								.append("info", new Document("x", 203).append("y", 102));
 						collection.insertOne(doc);
-				 */
+				 
 
 				// https://mongodb.github.io/mongo-java-driver/4.2/apidocs/mongodb-driver-sync/com/mongodb/client/package-summary.html
 
@@ -144,7 +148,7 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	public static void importMissingFiles()
 	{
@@ -177,7 +181,7 @@ public class Main {
 				else if (entry.isFile())
 				{
 					//System.out.print("File: ");
-					importFileIfMissing(entry);
+					//importFileIfMissing(entry);
 				}
 				System.out.println(entry.getName());
 			}

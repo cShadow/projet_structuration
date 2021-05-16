@@ -1,6 +1,14 @@
-package backend;
+package backend.gestion;
 
-public class MostRated {
+import backend.Gestion;
+import database.MongoDb;
+
+public class MostRatedGestion extends Gestion {
+
+	public MostRatedGestion(MongoDb dataBaseConn) {
+		super(dataBaseConn);
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	/* Demande : 
