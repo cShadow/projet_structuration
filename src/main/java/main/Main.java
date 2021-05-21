@@ -1,32 +1,16 @@
 package main;
 
 
-import com.mongodb.*;
-import com.mongodb.ConnectionString;
+
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
-
-import com.mongodb.ServerAddress;
-
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoIterable;
-
 import org.bson.Document;
 import java.util.Arrays;
-
-import com.mongodb.client.MongoCursor;
 import static com.mongodb.client.model.Filters.*;
-import com.mongodb.client.result.DeleteResult;
-import static com.mongodb.client.model.Updates.*;
-import com.mongodb.client.result.UpdateResult;
-import java.util.ArrayList;
-import java.util.List;
-
-
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.CharBuffer;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -49,8 +33,6 @@ public class Main {
 
 	public static void importFileIfMissing(File importFile, MongoCollection collection)
 	{
-		//System.out.println();
-		//System.out.println("Parsing file "+ importFile.getPath());
 		try {
 			// We read the entire file into memory, 
 			// then we use top down parsing to get the information we want to feed to MongoDB.
@@ -72,8 +54,6 @@ public class Main {
 			{
 				String fieldPrefix = fieldPrefixes[fieldIndex];
 				int atField = fileContent.indexOf(fieldPrefix, at);
-				//System.out.println("fieldPrefix: " + fieldPrefix + " at:" + at + " atField:" + atField);
-
 				if (atField >= 0)
 				{
 					at = atField + fieldPrefix.length();
@@ -130,12 +110,6 @@ public class Main {
 					collection.insertOne(doc);
 				}
 
-				/*
-				for (int fieldIndex = 0; fieldIndex < fieldStrings.length; fieldIndex++)
-				{
-					System.out.println(fieldIndex + fieldStrings[fieldIndex]);
-				}
-				 */
 			}
 
 		} catch (IOException e) {

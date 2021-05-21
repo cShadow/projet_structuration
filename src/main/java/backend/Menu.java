@@ -14,7 +14,7 @@ public class Menu {
 		System.out.println(Backend.getLoginGestion().login(pseudo));
 		int choix = 1;
 		while (choix != 7) {
-			System.out.println("Bienvenue dans la librairie du cul ! ;)");
+			System.out.println("Bienvenue dans la librairie ! ;)");
 			System.out.println("");
 			System.out.println("");
 			System.out.println("");
