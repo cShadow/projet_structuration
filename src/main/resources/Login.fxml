@@ -6,14 +6,20 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
-   <children>
-      <AnchorPane layoutX="-13.0" layoutY="-30.0" prefHeight="500.0" prefWidth="700.0">
-         <children>
-            <Button fx:id="bconnecter" layoutX="308.0" layoutY="382.0" mnemonicParsing="false" text="Se connecter" />
-            <TextArea layoutX="250.0" layoutY="253.0" prefHeight="33.0" prefWidth="200.0" />
-            <Text layoutX="235.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour, veuillez entrez votre identifiant" wrappingWidth="229.34063720703125" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+	xmlns="http://javafx.com/javafx/16">
+	<children>
+		<AnchorPane layoutX="-13.0" layoutY="-30.0"
+			prefHeight="500.0" prefWidth="700.0">
+			<children>
+				<Button fx:id="bconnecter" layoutX="308.0" layoutY="382.0"
+					mnemonicParsing="false" text="Se connecter" />
+				<TextArea layoutX="250.0" layoutY="253.0" prefHeight="33.0"
+					prefWidth="200.0" />
+				<Text layoutX="235.0" layoutY="137.0" strokeType="OUTSIDE"
+					strokeWidth="0.0" text="Bonjour, veuillez entrez votre identifiant"
+					wrappingWidth="229.34063720703125" />
+			</children>
+		</AnchorPane>
+	</children>
 </AnchorPane>

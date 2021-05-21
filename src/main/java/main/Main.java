@@ -20,55 +20,47 @@ import static com.mongodb.client.model.Filters.*;
 import com.mongodb.client.result.DeleteResult;
 import static com.mongodb.client.model.Updates.*;
 import com.mongodb.client.result.UpdateResult;
-
-import business.Oeuvre;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.CharBuffer;
 import java.io.File;
 import java.io.FileInputStream;
+
+import business.Oeuvre;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
 
 		MongoClient client = MongoClients.create("mongodb://localhost:27017");
 		MongoDatabase database = client.getDatabase("data");
-		//MongoCollection collection = database.getCollection("data");
-		
-		System.out.println("Congratulations, you have run the program !");
+		MongoCollection collection = database.getCollection("data");
 
 		MongoIterable<String> listNames = database.listCollectionNames();
-        for (String name : listNames) {
+		for (String name : listNames) {
 			System.out.println(name);
-        }
-        // java Document toy = new Document(â€œnameâ€�, â€œyoyoâ€�) .append(â€œagesâ€�, new Document(â€œminâ€�, 5)); ObjectId id = toys.insertOne(toy).getInsertedId().asObjectId().getValue();
+		}
 
-
-		
-		importMissingFiles();
+		importMissingFiles(collection);
 	}
 
-	/*public static void importFileIfMissing(File importFile)
+	public static void importFileIfMissing(File importFile, MongoCollection collection)
 	{
-
-		Oeuvre oeuvre = new Oeuvre();
-
+		//System.out.println();
+		//System.out.println("Parsing file "+ importFile.getPath());
 		try {
 			// We read the entire file into memory, 
-			// then use top down parsing to get the information we want to feed to MongoDB.
+			// then we use top down parsing to get the information we want to feed to MongoDB.
 			FileInputStream fileInputStream = new FileInputStream(importFile);
 			byte[] fileData = new byte[(int)importFile.length()];
 			fileInputStream.read(fileData);
 			fileInputStream.close();
 			String fileContent = new String(fileData, "UTF-8");
 
-			ArrayList<String> fieldPrefixes = new String[]{"Titre:", "Auteurs:", "Pages:", "Publication:", "Theme:", "Formations:", "Universites:", "Roles:", "Contenu:"};
+			String[] fieldPrefixes = new String[]{"Titre:", "Auteurs:", "Pages:", "Publication:", "Theme:", "Formations:", "Universites:", "Roles:", "Contenu:"};
 			String[] fieldStrings = new String[9];
 
 
@@ -76,81 +68,82 @@ public class Main {
 			int at = 0;
 			boolean fileIsValid = true;
 
-			InputStream in = new FileInputStream(importFile);
-			Reader reader = new InputStreamReader(in, "US-ASCII");
-			int intch;
-			String keyword = new String("");
-			while ((intch = r.read()) != -1) {
-				char ch = (char) intch;
-				keyword += ch;
-
-				if (fieldPrefixes.contains())
-
-
-
-			
-			}
-
-			for (int fieldIndex = 0; fieldIndex < fieldPrefixes.length - 1; fieldIndex++)
+			for (int fieldIndex = 0; fieldIndex < fieldPrefixes.length - 1 && fileIsValid; fieldIndex++)
 			{
 				String fieldPrefix = fieldPrefixes[fieldIndex];
 				int atField = fileContent.indexOf(fieldPrefix, at);
+				//System.out.println("fieldPrefix: " + fieldPrefix + " at:" + at + " atField:" + atField);
+
 				if (atField >= 0)
 				{
 					at = atField + fieldPrefix.length();
-
-					int afterField = at + fileContent.indexOf('\n', at) + 1;
+					int afterField = fileContent.indexOf('\n', at) + 1;
 					if (afterField > at)
 					{
 						fieldStrings[fieldIndex] = fileContent.substring(at, afterField).trim();
 						at = afterField;
 					}
 					else
-					{
 						fileIsValid = false;
-						break;
-					}
 				}
 				else
-				{
 					fileIsValid = false;
-					break;
-				}
 			}
 
-			System.out.println(fileIsValid);
+			int atField = fileContent.indexOf(fieldPrefixes[fieldPrefixes.length - 1], at);
+			if (atField >= 0)
+			{
+				at = atField + fieldPrefixes[fieldPrefixes.length-1].length();
+				fieldStrings[fieldPrefixes.length-1] = fileContent.substring(at).trim();
+			}
+			else
+				fileIsValid = false;
+
 			if (fileIsValid)
 			{
-				fieldStrings[fieldStrings.length] = fileContent.substring(at).trim();
-				for (int fieldIndex = 0; fieldIndex < fieldStrings.length; fieldIndex++)
+				boolean shouldImport = collection.find(and(eq("Titre", fieldStrings[0]), 
+						eq("Publication", fieldStrings[3]))).first() == null;
+				if (shouldImport)
 				{
-					System.out.println(fieldStrings[fieldIndex]);
+					String[] authorsList = fieldStrings[1].split(",");
+					String[] coursesList = fieldStrings[5].split(",");
+					String[] uniList = fieldStrings[6].split(",");
+					String[] rolesList = fieldStrings[7].split(",");
+					for (int i = 0; i < authorsList.length; i++)
+						authorsList[i] = authorsList[i].trim();
+					for (int i = 0; i < coursesList.length; i++)
+						coursesList[i] = coursesList[i].trim();
+					for (int i = 0; i < uniList.length; i++)
+						uniList[i] = uniList[i].trim();
+					for (int i = 0; i < rolesList.length; i++)
+						rolesList[i] = rolesList[i].trim();
+
+					Document doc = new Document("Titre", fieldStrings[0]);
+					doc.append("Auteurs", Arrays.asList(authorsList));
+					doc.append("Pages", fieldStrings[2]);
+					doc.append("Publication", fieldStrings[3]);  // AAAA-MM-JJ
+					doc.append("Theme", fieldStrings[4]);
+					doc.append("Formations", Arrays.asList(coursesList));
+					doc.append("Universites", Arrays.asList(uniList));
+					doc.append("Roles", Arrays.asList(rolesList));
+					doc.append("Contenu", fieldStrings[8]);
+					collection.insertOne(doc);
 				}
-				// TODO: look up whether the database doesn't already have an article
-				// with the same title and date. If not, then upload that document to the database.
 
 				/*
-						// Insertion d'un document
-						Document doc = new Document("name", "MongoDB")
-								.append("type", "database")
-								.append("count", 1)
-								.append("versions", Arrays.asList("v3.2", "v3.0", "v2.6"))
-								.append("info", new Document("x", 203).append("y", 102));
-						collection.insertOne(doc);
-				 
-
-				// https://mongodb.github.io/mongo-java-driver/4.2/apidocs/mongodb-driver-sync/com/mongodb/client/package-summary.html
-
-				// TODO: Maybe use this to parse a date once you have extracted a date string ??
-				//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
-				//Date date = formatter.parse(dateString);
+				for (int fieldIndex = 0; fieldIndex < fieldStrings.length; fieldIndex++)
+				{
+					System.out.println(fieldIndex + fieldStrings[fieldIndex]);
+				}
+				 */
 			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
-	public static void importMissingFiles()
+	public static void importMissingFiles(MongoCollection collection)
 	{
 		// Iterative BFS-like directory tree walking. 
 		// We use a circular buffer of File instances to memorize the directories to explore.
@@ -159,7 +152,7 @@ public class Main {
 		int pushIndex = 0;
 		int fetchIndex = 0;
 
-		foldersStack[0] = new File("import");
+		foldersStack[0] = new File("../import");
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println("The current working directory is " + currentDirectory);
 
@@ -176,14 +169,12 @@ public class Main {
 				{
 					foldersStack[pushIndex] = entry;
 					pushIndex = (pushIndex+1) % foldersStack.length;
-					//System.out.print("Directory: ");
 				}
 				else if (entry.isFile())
 				{
-					//System.out.print("File: ");
-					//importFileIfMissing(entry);
+					importFileIfMissing(entry, collection);
+					//break;
 				}
-				System.out.println(entry.getName());
 			}
 		}
 	}
