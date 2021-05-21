@@ -19,19 +19,14 @@ public class LoginGestion extends Gestion {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	//Objectif de cette classe : Se connecter à l'application avec l'id de l'utilisateur et sûrement un mdp
-
 	public String login(String pseudo) {
 		MongoDb mongo = this.getDataBaseConn();
 		MongoDatabase data = mongo.getDatabase();
 		System.out.println(data);
 		System.out.println(data.listCollectionNames());
-		
+
 		MongoCollection<Document> collec = data.getCollection("utilisateur");
 		Document doc = (Document) collec.find(Filters.eq("identifiant", pseudo)).first();
 		return doc.toString();
 	}
-
-
 }

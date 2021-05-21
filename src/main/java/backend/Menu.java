@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Menu {
 
 	public Menu() throws Exception {
-		
+
 		Scanner sc = new Scanner(System.in);
 		Backend.createBackend();
 		System.out.println("Bonjour, veuillez vous connectez en entrant vôtre identifiant");
@@ -37,10 +37,10 @@ public class Menu {
 
 			switch(choix) {
 			case 1:
-				Backend.getCommentaireGestion().test();
-;				break;
+
+				break;
 			case 2:
-				
+
 				break;
 			case 3:
 
@@ -55,7 +55,7 @@ public class Menu {
 
 				break;
 			case 7:
-				System.out.println("Fin de la session avec la librairie du cul");
+				System.out.println("Fin de la session.");
 				break;
 			}
 
